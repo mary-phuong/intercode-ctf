@@ -20,6 +20,8 @@ RANDOM_ID = -1
 def main(ctf_id: int, log_directory: str):
     if ctf_id == RANDOM_ID:
         ctf_id = random.choice(CTF_IDS)
+    else:
+        assert ctf_id in CTF_IDS
     log_directory = log_directory or './'
 
     try:
