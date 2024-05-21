@@ -8,7 +8,7 @@ echo "Setting up docker image for nl2bash..."
 docker build -t intercode-nl2bash -f docker/nl2bash.Dockerfile .
 
 echo "Setting up docker image for sql..."
-docker-compose -f docker/sql-docker-compose.yml up -d
+docker compose -f docker/sql-docker-compose.yml up -d
 
 echo "Setting up docker image for python..."
 docker build -t intercode-python -f docker/python.Dockerfile .

@@ -9,12 +9,12 @@ RUN apt-get update && \
 # Create custom file structure
 ENV file_system_version=1
 ENV script=setup_nl2b_fs_${file_system_version}.sh
-COPY ../docker/bash_scripts/$script /
+COPY docker/bash_scripts/$script /
 RUN chmod +x /$script
 RUN /$script
 
 # Commit custom file system to determine diffs
-COPY ../docker/docker.gitignore /
+COPY docker/docker.gitignore /
 RUN mv docker.gitignore .gitignore
 RUN git config --global user.email "intercode@pnlp.org"
 RUN git config --global user.name "intercode"

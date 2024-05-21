@@ -4,12 +4,12 @@ FROM alpine:latest
 RUN apk add git
 
 # Create custom testbed directory
-COPY ../docker/bash_scripts/setup_fs.sh /
+COPY docker/bash_scripts/setup_fs.sh /
 RUN chmod +x /setup_fs.sh
 RUN /setup_fs.sh
 
 # Commit custom testbed directory to determine diffs
-COPY ../docker/docker.gitignore /
+COPY docker/docker.gitignore /
 RUN mv docker.gitignore .gitignore
 RUN git config --global user.email "intercode@pnlp.org"
 RUN git config --global user.name "intercode"
