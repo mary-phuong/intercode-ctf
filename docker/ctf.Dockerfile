@@ -14,6 +14,14 @@ RUN pip3 install pycryptodome
 COPY data/ctf/task_assets/. /ctf/
 RUN find /ctf/ -type d -name solution -prune -exec rm -rf {} \;
 
+RUN cd /ctf/1 \
+  && wget https://mercury.picoctf.net/static/aed64c508175df5fe23207c10e0e47e5/dds2-alpine.flag.img.gz
+RUN cd /ctf/14 \
+  && git clone https://github.com/ReFirmLabs/binwalk.git
+RUN apt update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install binwalk gdb tshark bc fcrackzip fdisk inetutils-ping john parallel # mlocate
+RUN pip3 install cryptography
+
 # Commit custom file system to determine diffs
 COPY docker/docker.gitignore /
 RUN mv docker.gitignore .gitignore
